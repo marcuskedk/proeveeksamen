@@ -1,3 +1,13 @@
+:root {
+    --bs-link-color: #EE0000;
+    --bs-link-hover-color: #be1313;
+}
+
+@font-face {
+    font-family: 'Eurostile';
+    src: url('../files/fonts/EurostileBold.ttf');
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -7,6 +17,38 @@ html, body {
 }
 
 * {
-    font-size: 14px;
+    font-size: 16px;
     box-sizing: border-box;
+    font-family: 'Eurostile';
 }
+
+/* EXTRA START */
+
+/* EXTRA END */
+
+/* HEADER START */
+.fta-header {}
+.fta-header .fta-navbar-first {
+    height: 100vh;
+    display: block;
+}
+.fta-header .fta-navbar-first .nav-link-top {
+    color: var(--bs-link-color);
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin: 0 1rem;
+}
+.fta-header .fta-navbar-second {}
+/* HEADER END */
+
+/* BODY START */
+.fta-section {
+    padding: 3rem 0;
+}
+/* BODY END */
+
+/* FOOTER START */
+/* FOOTER END */
+
+/* MEDIA START */
+/* MEDIA END */
