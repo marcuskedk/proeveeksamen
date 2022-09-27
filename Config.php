@@ -4,6 +4,17 @@
     session_start();
     date_default_timezone_set("Europe/Copenhagen");
 
+    if (strpos("https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'], "inc/data/packs") !== false) {
+        $URL_E = '../../..';
+        $URL_A = 'notactive';
+    } else if (strpos("https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'], "clientarea") !== false) {
+        $URL_E = '..';
+        $URL_A = 'active';
+    } else {
+        $URL_E = '.';
+        $URL_A = 'notactive';
+    }
+
     $DB_HOSTNAME = 'localhost';
     $DB_USERNAME = 'root';
     $DB_PASSWORD = '';

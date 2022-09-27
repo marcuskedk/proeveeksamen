@@ -10,7 +10,6 @@
 
 html, body {
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,26 +18,55 @@ html, body {
 * {
     font-size: 16px;
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Eurostile';
 }
 
 /* EXTRA START */
-
+.btn-danger {
+    --bs-btn-bg: var(--bs-link-hover-color);
+    --bs-btn-border-color: var(--bs-link-hover-color);
+    --bs-btn-hover-bg: var(--bs-link-color);
+    --bs-btn-hover-border-color: var(--bs-link-color);
+    --bs-btn-active-bg: var(--bs-link-color);
+    --bs-btn-active-border-color: var(--bs-link-color);
+    --bs-btn-disabled-bg: var(--bs-link-hover-color);
+    --bs-btn-disabled-border-color: var(--bs-link-hover-color);
+}
+.bounce-2 {
+    animation-name: bounce-2;
+    animation-timing-function: ease;
+    align-self: flex-end;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+}
 /* EXTRA END */
 
 /* HEADER START */
-.fta-header {}
-.fta-header .fta-navbar-first {
+.clientarea .fta-navbar-first {
+    display: none;
+}
+
+.fta-navbar-first {
     height: 100vh;
     display: block;
 }
-.fta-header .fta-navbar-first .nav-link-top {
+.fta-navbar-first .nav-link-top {
     color: var(--bs-link-color);
     font-weight: 600;
     font-size: 2.5rem;
     margin: 0 1rem;
 }
-.fta-header .fta-navbar-second {}
+.fta-navbar-first .navbar-fta-menu {
+    justify-content: space-between;
+}
+.fta-navbar-second {
+    z-index: 10000;
+}
 /* HEADER END */
 
 /* BODY START */
@@ -52,3 +80,11 @@ html, body {
 
 /* MEDIA START */
 /* MEDIA END */
+
+/* KEYFRAMES START */
+@keyframes bounce-2 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-100px); }
+    100% { transform: translateY(0); }
+}
+/* KEYFRAMES END */
