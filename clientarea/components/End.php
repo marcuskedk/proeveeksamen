@@ -1,11 +1,7 @@
-<?php 
-
-    if (isset($_SESSION['loggedin']) === true) { ?>
-                        </div>
+                <?php if (isset($_SESSION['loggedin']) === true) { ?>
                     </div>
                 </div>
+                <?php } ?>
             </div>
-        </main>
-    <?php }
-
-?>
+        </div>
+    </main>
