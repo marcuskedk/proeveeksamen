@@ -9,26 +9,39 @@
 ?>
 
 <main data-bs-target="#fta-navbar">
-    <section class="fta-section fta-about" id="about">
-        <div class="container">
-            <div class="row justify-content-center g-3 mt-3">
-                <div class="col-12">
-                    <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Om os</h2>
+    <?php if (isset($_GET['search'])) { ?>
+        <section class="fta-section fta-travels" id="products">
+            <div class="container">
+                <div class="row justify-content-center g-3 mt-3">
+                    <div class="col-12">
+                        <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Rejsemål - søgning efter: <?=$_GET['search'];?></h2>
+                    </div>
+                    <?php all_travels($con, "WHERE `" . $Settings_Search_After . "` LIKE '%" . $_GET['search'] . "%' ORDER BY `Travels_Ratings` DESC", "searchTravels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
                 </div>
-                <?php all_abouts($con, "", "abouts"); // Alle om os - Findes under inc/data/functions/frontpage.functions.php ?>
             </div>
-        </div>
-    </section>
-    <section class="fta-section fta-travels" id="products">
-        <div class="container">
-            <div class="row justify-content-center g-3 mt-3">
-                <div class="col-12">
-                    <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Rejsemål</h2>
+        </section>
+    <?php } else { ?>
+        <section class="fta-section fta-about" id="about">
+            <div class="container">
+                <div class="row justify-content-center g-3 mt-3">
+                    <div class="col-12">
+                        <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Om os</h2>
+                    </div>
+                    <?php all_abouts($con, "", "abouts"); // Alle om os - Findes under inc/data/functions/frontpage.functions.php ?>
                 </div>
-                <?php all_travels($con, "ORDER BY `Travels_Ratings` DESC", "travels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
             </div>
-        </div>
-    </section>
+        </section>
+        <section class="fta-section fta-travels" id="products">
+            <div class="container">
+                <div class="row justify-content-center g-3 mt-3">
+                    <div class="col-12">
+                        <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Rejsemål</h2>
+                    </div>
+                    <?php all_travels($con, "ORDER BY `Travels_Ratings` DESC", "travels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
+                </div>
+            </div>
+        </section>
+    <?php } ?>
     <section class="fta-section fta-contact" id="contact">
         <div class="container">
             <div class="row justify-content-center g-3 mt-3">

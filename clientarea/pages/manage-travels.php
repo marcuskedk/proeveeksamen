@@ -1,9 +1,9 @@
 <?php if (isset($_GET['id'])) { ?>
-    <?php $AllAboutsFetch = all_abouts($con, "WHERE `Abouts_ID` = '" . $_GET['id'] . "'", "manageAboutsByID"); ?>
+    <?php $AllTravelsFetch = all_travels($con, "WHERE `Travels_ID` = '" . $_GET['id'] . "'", "manageTravelsByID"); ?>
     <div class="col-12">
         <div class="card rounded-1">
             <div class="card-header">
-                <h5 class="mb-0">Administrere <?=$AllAboutsFetch['Abouts_Title'];?> <a href="./?page=manage-abouts" class="float-end">Tilbage</a></h5>
+                <h5 class="mb-0">Administrere <?=$AllTravelsFetch['Travels_Title'];?> <a href="./?page=manage-travels" class="float-end">Tilbage</a></h5>
             </div>
             <form method="POST" class="card-body row g-3 needs-validation" novalidate enctype="multipart/form-data">
                 <?php if ($status['error']) { ?>
@@ -15,7 +15,7 @@
                 <?php } ?>
                 <div class="col-12">
                     <label for="title-validate" class="form-label">Title</label>
-                    <input type="text" name="title" id="title-validate" value="<?=(isset($AllAboutsFetch['Abouts_Title'])) ? $AllAboutsFetch['Abouts_Title'] : $_POST['title'];?>" placeholder="Title" class="form-control rounded-1" required>
+                    <input type="text" name="title" id="title-validate" value="<?=(isset($AllTravelsFetch['Travels_Title'])) ? $AllTravelsFetch['Travels_Title'] : $_POST['title'];?>" placeholder="Title" class="form-control rounded-1" required>
                     <div class="valid-feedback">
                         Ser godt ud!
                     </div>
@@ -24,8 +24,18 @@
                     </div>
                 </div>
                 <div class="col-12">
+                    <label for="subtitle-validate" class="form-label">Subtitle</label>
+                    <input type="text" name="subtitle" id="subtitle-validate" value="<?=(isset($AllTravelsFetch['Travels_Subtitle'])) ? $AllTravelsFetch['Travels_Subtitle'] : $_POST['subtitle'];?>" placeholder="Subtitle" class="form-control rounded-1" required>
+                    <div class="valid-feedback">
+                        Ser godt ud!
+                    </div>
+                    <div class="invalid-feedback">
+                        Subtitlen kan ikke være tom!
+                    </div>
+                </div>
+                <div class="col-12">
                     <label for="content-validate" class="form-label">Beskrivelse</label>
-                    <textarea name="content" id="content-validate" cols="30" rows="5" placeholder="Beskrivelse" class="form-control rounded-1" required><?=(isset($AllAboutsFetch['Abouts_Content'])) ? $AllAboutsFetch['Abouts_Content'] : $_POST['content'];?></textarea>
+                    <textarea name="content" id="content-validate" cols="30" rows="5" placeholder="Beskrivelse" class="form-control rounded-1" required><?=(isset($AllTravelsFetch['Travels_Content'])) ? $AllTravelsFetch['Travels_Content'] : $_POST['content'];?></textarea>
                     <div class="valid-feedback">
                         Ser godt ud!
                     </div>
@@ -35,7 +45,7 @@
                 </div>
                 <div class="col-12">
                     <label for="beforeimg-validate" class="form-label">Billede</label>
-                    <input type="hidden" name="beforeimg" id="beforeimg-validate" value="<?=(isset($AllAboutsFetch['Abouts_IMG'])) ? $AllAboutsFetch['Abouts_IMG'] : $_POST['img'];?>">
+                    <input type="hidden" name="beforeimg" id="beforeimg-validate" value="<?=(isset($AllTravelsFetch['Travels_IMG'])) ? $AllTravelsFetch['Travels_IMG'] : $_POST['img'];?>">
                     <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Billede" class="form-control rounded-1">
                     <div class="valid-feedback">
                         Ser godt ud!
@@ -46,19 +56,19 @@
                 </div>
                 <div class="col-12">
                     <label for="img-validate" class="form-label">Billedevisning</label>
-                    <img src="../assets/files/img/abouts/<?=$AllAboutsFetch['Abouts_IMG'];?>" width="100%" alt="">
+                    <img src="../assets/files/img/travels/<?=$AllTravelsFetch['Travels_Country'];?>/<?=$AllTravelsFetch['Travels_IMG'];?>" width="100%" alt="">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-danger rounded-1" name="update_abouts">Gem ændringerne</button>
+                    <button type="submit" class="btn btn-danger rounded-1" name="update_travels">Gem ændringerne</button>
                 </div>
             </form>
         </div>
     </div>
-<?php } else if ($_GET['page'] == "create-abouts") { ?>
+<?php } else if ($_GET['page'] == "create-travels") { ?>
     <div class="col-12">
         <div class="card rounded-1">
             <div class="card-header">
-                <h5 class="mb-0">Opret en ny om os <a href="./?page=manage-abouts" class="float-end">Tilbage</a></h5>
+                <h5 class="mb-0">Opret en ny om os <a href="./?page=manage-travels" class="float-end">Tilbage</a></h5>
             </div>
             <form method="POST" class="card-body row g-3 needs-validation" novalidate enctype="multipart/form-data">
                 <?php if ($status['error']) { ?>
@@ -69,7 +79,6 @@
                     </div>
                 <?php } ?>
                 <div class="col-12">
-                    <label for="title-validate" class="form-label">Title</label>
                     <input type="text" name="title" id="title-validate" value="<?=(isset($_POST['title'])) ? $_POST['title'] : '';?>" placeholder="Title" class="form-control rounded-1" required>
                     <div class="valid-feedback">
                         Ser godt ud!
@@ -79,7 +88,6 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label for="content-validate" class="form-label">Beskrivelse</label>
                     <textarea name="content" id="content-validate" cols="30" rows="5" placeholder="Beskrivelse" class="form-control rounded-1" required><?=(isset($_POST['content'])) ? $_POST['content'] : '';?></textarea>
                     <div class="valid-feedback">
                         Ser godt ud!
@@ -89,7 +97,6 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label for="img-validate" class="form-label">Billede</label>
                     <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Title" class="form-control rounded-1">
                     <div class="valid-feedback">
                         Ser godt ud!
@@ -99,7 +106,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-danger rounded-1" name="create_abouts">Opret</button>
+                    <button type="submit" class="btn btn-danger rounded-1" name="create_travels">Opret</button>
                 </div>
             </form>
         </div>
@@ -108,7 +115,7 @@
     <div class="col-12">
         <div class="card rounded-1">
             <div class="card-header">
-                <h5 class="mb-0">Administrere om os</h5>
+                <h5 class="mb-0">Administrere rejsemål</h5>
             </div>
             <table class="table table-sm mb-0">
                 <thead>
@@ -119,9 +126,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php all_abouts($con, "", "manageTableAbouts"); ?>
+                    <?php all_travels($con, "", "manageTableTravels"); ?>
                 </tbody>
-                <caption class="p-2"><a href="./?page=create-abouts" class="btn btn-danger btn-sm rounded-1">Opret ny om os</a></caption>
+                <caption class="p-2"><a href="./?page=create-travels" class="btn btn-danger btn-sm rounded-1">Opret ny rejsemål</a></caption>
             </table>
         </div>
     </div>

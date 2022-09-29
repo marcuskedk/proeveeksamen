@@ -30,10 +30,10 @@
             require './pages/manage-abouts.php';
         } else if ($_GET['page'] === "create-abouts") {
             require './pages/manage-abouts.php';
-        } else if ($_GET['page'] === "manage-products") {
-            require './pages/manage-products.php';
-        } else if ($_GET['page'] === "create-products") {
-            require './pages/manage-products.php';
+        } else if ($_GET['page'] === "manage-travels") {
+            require './pages/manage-travels.php';
+        } else if ($_GET['page'] === "create-travels") {
+            require './pages/manage-travels.php';
         } else if ($_GET['page'] === "manage-contacts") {
             require './pages/manage-contacts.php';
         } else if ($_GET['page'] === "create-contacts") {

@@ -38,6 +38,8 @@
                 $Settings_Logo_Bottom = $Settings_Value['Settings_Value'];
             } if ($Settings_Value['Settings_Label'] === "footer-text") {
                 $Settings_Footer_Text = $Settings_Value['Settings_Value'];
+            } if ($Settings_Value['Settings_Label'] === "search-after") {
+                $Settings_Search_After = $Settings_Value['Settings_Value'];
             }
         }
     }

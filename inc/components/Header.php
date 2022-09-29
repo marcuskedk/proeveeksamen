@@ -31,6 +31,10 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <form class="d-flex d-flex d-lg-none" role="search" method="POST">
+                <input class="form-control rounded-1 me-2" type="search" name="search" value="<?=(isset($_GET['search'])) ? $_GET['search'] : '';?>" placeholder="Søg..." aria-label="Søg" required>
+                <button class="btn btn-outline-secondary rounded-1" type="submit" name="searchnow" title="Søg">Søg</button>
+            </form>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -43,27 +47,21 @@
                         <a href="<?=$URL_E;?>/#contact" class="nav-link" title="Kontakt">Kontakt</a>
                     </li>
                 </ul>
-            </div>
-            <form class="d-flex d-flex d-lg-none" role="search">
-                <input class="form-control rounded-1 me-2" type="search" placeholder="Søg..." aria-label="Søg">
-                <button class="btn btn-outline-secondary rounded-1" type="submit" title="Søg">Søg</button>
-            </form>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <form class="d-flex d-none d-lg-flex" role="search">
-                    <input class="form-control rounded-1 me-2" type="search" placeholder="Søg..." aria-label="Søg">
-                    <button class="btn btn-outline-secondary rounded-1" type="submit" title="Søg">Søg</button>
-                </form>
                 <ul class="navbar-nav ms-auto">
+                    <form class="d-flex d-none d-lg-flex ms-auto" role="search" method="POST">
+                        <input class="form-control rounded-1 me-2" type="search" name="search" value="<?=(isset($_GET['search'])) ? $_GET['search'] : '';?>" placeholder="Søg..." aria-label="Søg" required>
+                        <button class="btn btn-outline-secondary rounded-1 me-2" type="submit" name="searchnow" title="Søg">Søg</button>
+                    </form>
                     <?php if (isset($_SESSION['loggedin']) === false) { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger rounded-1 me-2" title="Log ind">Log ind</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger rounded-1 me-2 mb-2 mb-lg-0" title="Log ind">Log ind</a>
                         </li>
                         <li class="nav-item">
                             <a href="<?=$URL_E;?>/clientarea/?type=register" class="btn btn-danger rounded-1" title="Opret konto">Opret konto</a>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger rounded-1 me-2" title="Kundeside">Kundeside</a>
+                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger rounded-1 me-2 mb-2 mb-lg-0" title="Kundeside">Kundeside</a>
                         </li>
                         <li class="nav-item">
                             <a href="<?=$URL_E;?>/clientarea/?type=logout" class="btn btn-danger rounded-1" title="Log ud">Log ud</a>

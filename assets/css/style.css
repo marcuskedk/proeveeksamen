@@ -25,7 +25,7 @@ html, body {
     font-family: sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .nav-link, [type="search"] {
     font-family: 'Eurostile';
 }
 
@@ -60,6 +60,12 @@ a {
     animation-iteration-count: infinite;
     transform-origin: bottom;
 }
+.modal-backdrop {
+    z-index: 90000;
+}
+.modal {
+    z-index: 100000;
+}
 /* EXTRA END */
 
 /* HEADER START */
@@ -70,6 +76,10 @@ a {
 .fta-navbar-first {
     height: 100vh;
     display: block;
+}
+.fta-navbar-first .navbar-nav {
+    height: 65%;
+    justify-content: space-between;
 }
 .fta-navbar-first .nav-link-top {
     color: var(--bs-link-color);
@@ -95,6 +105,11 @@ a {
 /* FOOTER END */
 
 /* MEDIA START */
+@media screen and (max-width: 767px) {
+    .nav-brand img {
+        width: 95px;
+    }
+}
 /* MEDIA END */
 
 /* KEYFRAMES START */

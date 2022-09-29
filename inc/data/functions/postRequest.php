@@ -3,6 +3,11 @@
     $status = [];
     $status['error'] = [];
 
+    if (isset($_POST['searchnow']) === true) {
+        $search = mysqli_real_escape_string($con, $_POST['search']);
+        header('Location: ' . $URL_E . '/?search=' . $search . '#products');
+    }
+
     if (isset($_POST['login']) === true) {
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
             $status['error'] = 'Email er ikke gyldigt!';
@@ -145,6 +150,46 @@
             } else {
                 $status['error'] = 'Der opstod en fejl under ændringen!';
             }
+        }
+    }
+
+    if (isset($_POST['create_settings']) === true) {
+        if (!empty($_POST['label'])) {
+            $label = mysqli_real_escape_string($con, $_POST['label']);
+        }
+        if (!empty($_POST['value'])) {
+            $value = mysqli_real_escape_string($con, $_POST['value']);
+        }
+        $CheckIfSettingsExistResult = mysqli_query($con, "SELECT * FROM `fta_settings` WHERE `Settings_Label` = '$label'");
+        if (!$CheckIfSettingsExistResult) {
+            $InsertThsiSettingsResult = mysqli_query($con, "INSERT INTO `fta_settings` (`Settings_Label`, `Settings_Value`) VALUES ('$label', '$value')");
+            if ($InsertThsiSettingsResult) {
+                header('Location: ./?page=manage-settings');
+            } else {
+                $status['error'] = 'Der opstod en fejl under ændringen!';
+            }
+        } else {
+            $status['error'] = 'Denne indstilling eksistere allerede!';
+        }
+    }
+
+    if (isset($_POST['update_settings']) === true) {
+        if (!empty($_POST['label'])) {
+            $label = mysqli_real_escape_string($con, $_POST['label']);
+        }
+        if (!empty($_POST['value'])) {
+            $value = mysqli_real_escape_string($con, $_POST['value']);
+        }
+        $CheckIfSettingsExistResult = mysqli_query($con, "SELECT * FROM `fta_settings` WHERE `Settings_ID` = '" . $_GET['id'] . "'");
+        if ($CheckIfSettingsExistResult) {
+            $UpdateThsiSettingsResult = mysqli_query($con, "UPDATE `fta_settings` SET `Settings_Label` = '$label', `Settings_Value` = '$value' WHERE `Settings_ID` = '" . $_GET['id'] . "'");
+            if ($UpdateThsiSettingsResult) {
+                header('Location: ./?page=manage-settings');
+            } else {
+                $status['error'] = 'Der opstod en fejl under ændringen!';
+            }
+        } else {
+            $status['error'] = 'Denne indstilling eksistere ikke!';
         }
     }
 

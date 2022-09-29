@@ -1,0 +1,24 @@
+# mod_rewrite starts here
+
+RewriteEngine on
+
+# Does not apply to existing directories, meaning that if the folder on the server then dont't change anything and don't run the Rule!
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Check for file in directory with .php extension
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+# Here we actually show the page that has the .php extension
+
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+ErrorDocument 401 /dir/401.php
+ErrorDocument 403 /dir/403.php
+ErrorDocument 404 /dir/404.php
+
+ErrorDocument 500 /dir/500.php
+ErrorDocument 502 /dir/502.php
+ErrorDocument 503 /dir/503.php
+ErrorDocument 504 /dir/504.php
