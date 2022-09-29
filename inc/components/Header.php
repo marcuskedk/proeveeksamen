@@ -43,17 +43,17 @@
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['loggedin']) === false) { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger me-2">Log ind</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger rounded-1 me-2">Log ind</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=register" class="btn btn-danger">Opret konto</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=register" class="btn btn-danger rounded-1">Opret konto</a>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger me-2">Navn</a>
+                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger rounded-1 me-2">Kundeside</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=logout" class="btn btn-danger">Log ud</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=logout" class="btn btn-danger rounded-1">Log ud</a>
                         </li>
                     <?php } ?>
                 </ul>
