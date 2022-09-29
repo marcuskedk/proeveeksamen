@@ -16,7 +16,7 @@
                     <div class="col-12">
                         <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Rejsemål - søgning efter: <?=$_GET['search'];?></h2>
                     </div>
-                    <?php all_travels($con, "WHERE `" . $Settings_Search_After . "` LIKE '%" . $_GET['search'] . "%' ORDER BY `Travels_Ratings` DESC", "searchTravels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
+                    <?php all_travels($con, "WHERE `" . $Settings_Search_After . "` LIKE '%" . $_GET['search'] . "%' ORDER BY `Travels_Ratings` DESC", "searchTravels"); // Specifik rejse - Findes under inc/data/functions/frontpage.functions.php ?>
                 </div>
             </div>
         </section>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-lg-6">
                     <h3>Kontakt informationer</h3>
-                    <?php all_contacts($con, "", "contacts"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
+                    <?php all_contacts($con, "", "contacts"); // Alle kontakt oplysninger - Findes under inc/data/functions/frontpage.functions.php ?>
                 </div>
                 <div class="col-lg-6">
                     <h3>Skriv til os</h3>
@@ -62,7 +62,7 @@
                             <input type="text" class="form-control rounded-1" name="company" id="company-validate" placeholder="Firma/Organisation" required>
                         </div>
                         <div class="col-12">
-                            <input type="text" class="form-control rounded-1" name="email" id="email-validate" placeholder="Email Adresse" required>
+                            <input type="email" class="form-control rounded-1" name="email" id="email-validate" placeholder="Email Adresse" required>
                         </div>
                         <div class="col-12">
                             <input type="number" class="form-control rounded-1" name="phonenumber" id="phonenumber-validate" placeholder="Telefon" required>
@@ -77,7 +77,6 @@
                             <button class="btn btn-danger rounded-1" name="send_message">Send</button>
                         </div>
                     </form>
-                    <img src="" alt="">
                 </div>
             </div>
         </div>

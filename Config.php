@@ -4,7 +4,16 @@
     session_start();
     date_default_timezone_set("Europe/Copenhagen");
 
-    if (strpos("https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'], "inc/data/packs") !== false) {
+    $port = ":4000";
+
+    if ($_SERVER['SERVER_NAME'] == "localhost") {
+        $https = "";
+    } else {
+        $https = "https://";
+    }
+    $URL = $https . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
+    echo $URL;
+    if (strpos($https . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'], "inc/data/packs") !== false) {
         $URL_E = '../../..';
         $URL_A = 'notactive';
     } else if (strpos("https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'], "clientarea") !== false) {
