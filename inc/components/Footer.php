@@ -1,6 +1,6 @@
 <footer class="bg-dark">
     <div class="container">
-        <p class="text-white p-3 text-center mb-0">@ 2022 - <a href="#" class="text-decoration-none">FTA Travels</a>, All rights reserved.</p>
+        <p class="text-white p-3 text-center mb-0">&copy; <?=$Settings_Footer_Text;?></p>
     </div>
 </footer>
 

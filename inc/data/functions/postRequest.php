@@ -76,4 +76,23 @@
         }
     }
 
+    if (isset($_POST['update_abouts']) === true) {
+        if (!empty($_POST['title'])) {
+            $title = mysqli_real_escape_string($con, $_POST['title']);
+        }
+        if (!empty($_POST['content'])) {
+            $content = mysqli_real_escape_string($con, $_POST['content']);
+        }
+        if (!empty($_POST['img'])) {
+            $img = mysqli_real_escape_string($con, $_FILES['img']);
+        }
+        $CheckIfAboutsExistResult = mysqli_query($con, "SELECT * FROM `fta_abouts` WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+        if ($CheckIfAboutsExistResult) {
+            $UpdateThsiAboutResult = mysqli_query($con, "UPDATE `fta_abouts` SET `Abouts_Title` = '$title', `Abouts_Content` = '$content', `Abouts_IMG` = '$img' WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+            header('Location: ./?page=manage-abouts');
+        } else {
+            $status['error'] = 'Der opstod en fejl under ændringen!';
+        }
+    }
+
 ?>

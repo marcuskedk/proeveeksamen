@@ -25,7 +25,7 @@
                 <div class="col-12">
                     <h2 class="bg-secondary rounded-2 text-white text-center p-3 fs-3">Rejsemål</h2>
                 </div>
-                <?php all_travels($con, "ORDER BY `Travels_Timestamp`", "travels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
+                <?php all_travels($con, "ORDER BY `Travels_Ratings` DESC", "travels"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
             </div>
         </div>
     </section>
@@ -37,11 +37,11 @@
                 </div>
                 <div class="col-lg-6">
                     <h3>Kontakt informationer</h3>
-                    <?php all_contacts($con, "ORDER BY `Contacts_Timestamp`", "contacts"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
+                    <?php all_contacts($con, "", "contacts"); // Alle rejser - Findes under inc/data/functions/frontpage.functions.php ?>
                 </div>
                 <div class="col-lg-6">
                     <h3>Skriv til os</h3>
-                    <form method="POST" class="row g-3">
+                    <form method="POST" class="row g-3 needs-validation" novalidate>
                         <div class="col-12">
                             <input type="text" class="form-control rounded-1" name="name" id="name-validate" placeholder="Navn" required>
                         </div>
@@ -55,7 +55,10 @@
                             <input type="number" class="form-control rounded-1" name="phonenumber" id="phonenumber-validate" placeholder="Telefon" required>
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control rounded-1" name="" id="phonenumber-validate" cols="30" rows="10" placeholder="Telefon" required></textarea>
+                            <input type="text" class="form-control rounded-1" name="subject" id="subject-validate" placeholder="Emne" required>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control rounded-1" name="message" id="message-validate" cols="30" rows="5" placeholder="Besked" required></textarea>
                         </div>
                         <div class="col-12">
                             <button class="btn btn-danger rounded-1" name="send_message">Send</button>

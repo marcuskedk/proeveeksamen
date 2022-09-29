@@ -16,6 +16,6 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="row g-3">
-                <?php } if (!$_GET['type'] && !$_SESSION['loggedin']) {
+                <?php } if (!isset($_GET['type']) && !isset($_SESSION['loggedin'])) {
                     header('Location: ../clientarea/?type=login');
                 } ?>

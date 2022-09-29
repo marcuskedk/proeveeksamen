@@ -36,6 +36,8 @@
                 $Settings_Logo_Top = $Settings_Value['Settings_Value'];
             } if ($Settings_Value['Settings_Label'] === "logo-bottom") {
                 $Settings_Logo_Bottom = $Settings_Value['Settings_Value'];
+            } if ($Settings_Value['Settings_Label'] === "footer-text") {
+                $Settings_Footer_Text = $Settings_Value['Settings_Value'];
             }
         }
     }

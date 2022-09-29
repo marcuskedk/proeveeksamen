@@ -1,6 +1,10 @@
 :root {
     --bs-link-color: #EE0000;
     --bs-link-hover-color: #be1313;
+    --bs-dark: #363636;
+    --bs-dark-rgb: 54, 54, 54;
+    --bs-secondary: #595959;
+    --bs-secondary-rgb: 89, 89, 89;
 }
 
 @font-face {
@@ -25,6 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Eurostile';
 }
 
+a {
+    text-decoration: none;
+}
+
 /* EXTRA START */
 .btn-danger {
     --bs-btn-bg: var(--bs-link-hover-color);
@@ -35,6 +43,14 @@ h1, h2, h3, h4, h5, h6 {
     --bs-btn-active-border-color: var(--bs-link-color);
     --bs-btn-disabled-bg: var(--bs-link-hover-color);
     --bs-btn-disabled-border-color: var(--bs-link-hover-color);
+}
+.list-group {
+    --bs-list-group-active-bg: var(--bs-link-hover-color);
+    --bs-list-group-active-border-color: var(--bs-link-hover-color);
+}
+.form-control:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 0.25rem rgb(190 19 19 / 25%);
 }
 .bounce-2 {
     animation-name: bounce-2;

@@ -31,6 +31,18 @@
                         </div>
                     ';
                 }
+            } else if ($type === "manageTableAbouts") {
+                foreach ($AllAboutsResult as $AllAbouts_Key => $AllAbouts_Value) {
+                    $response = $response . '
+                        <tr>
+                            <td class="p-0"><a class="p-1 d-block text-dark" href="./?page=manage-abouts&id=' . $AllAbouts_Value['Abouts_ID'] . '">' . $AllAbouts_Key + 1 . '</a></td>
+                            <td class="p-0"><a class="p-1 d-block text-dark" href="./?page=manage-abouts&id=' . $AllAbouts_Value['Abouts_ID'] . '">' . $AllAbouts_Value['Abouts_Title'] . '</a></td>
+                            <td class="p-0"><a class="p-1 d-block text-dark text-end" href="./?page=manage-abouts&id=' . $AllAbouts_Value['Abouts_ID'] . '">' . Date('d-m-Y', strtotime($AllAbouts_Value['Abouts_Timestamp'])) . '</a></td>
+                        </tr>
+                    ';
+                }
+            } else if ($type === "manageAboutsByID") {
+                return $AllAboutsFetch = mysqli_fetch_assoc($AllAboutsResult);
             }
         }
         echo $response;

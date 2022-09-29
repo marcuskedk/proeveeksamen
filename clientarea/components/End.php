@@ -4,5 +4,5 @@
                 <?php } ?>
             </div>
         </div>
-        <?php require '../inc/components/Footer.php'; ?>
     </main>
+    <?php require '../inc/components/Footer.php'; ?>

@@ -2,13 +2,12 @@
 
     if (isset($_SESSION['loggedin']) === true) {
         $email = $_SESSION['email'];
-        $AccountResult = mysqli_query($con, "SELECT * FROM `fta_accounts` WHERE `Accounts_Email` = '$email'");
-        if ($AccountResult->num_rows > 0) {
-            $AccountFetch = mysqli_fetch_assoc($AccountResult);
-            $firstname = $AccountFetch['Accounts_Firstname'];
-            $lastname = $AccountFetch['Accounts_Lastname'];
-            $role = $AccountFetch['Accounts_Role'];
-            $timestamp = $AccountFetch['Accounts_Timestamp'];
+        $UsersResult = mysqli_query($con, "SELECT * FROM `fta_users` WHERE `Users_Email` = '$email'");
+        if ($UsersResult->num_rows > 0) {
+            $UsersFetch = mysqli_fetch_assoc($UsersResult);
+            $name = $UsersFetch['Users_Name'];
+            $role = $UsersFetch['Users_Role'];
+            $timestamp = $UsersFetch['Users_Timestamp'];
         }
     }
 

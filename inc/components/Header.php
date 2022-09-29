@@ -28,32 +28,45 @@
             <a href="<?=$URL_E;?>/" class="nav-brand">
                 <img src="<?=$URL_E;?>/assets/files/img/<?=$Settings_Logo_Bottom;?>" alt="<?=$Settings_Title;?>" title="<?=$Settings_Title;?>" width="200px" />
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="<?=$URL_E;?>/#about" class="nav-link">Om os</a>
+                        <a href="<?=$URL_E;?>/#about" class="nav-link" title="Om os">Om os</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$URL_E;?>/#products" class="nav-link">Produkter</a>
+                        <a href="<?=$URL_E;?>/#products" class="nav-link" title="Produkter">Produkter</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$URL_E;?>/#contact" class="nav-link">Kontakt</a>
+                        <a href="<?=$URL_E;?>/#contact" class="nav-link" title="Kontakt">Kontakt</a>
                     </li>
                 </ul>
+            </div>
+            <form class="d-flex d-flex d-lg-none" role="search">
+                <input class="form-control rounded-1 me-2" type="search" placeholder="Søg..." aria-label="Søg">
+                <button class="btn btn-outline-secondary rounded-1" type="submit" title="Søg">Søg</button>
+            </form>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <form class="d-flex d-none d-lg-flex" role="search">
+                    <input class="form-control rounded-1 me-2" type="search" placeholder="Søg..." aria-label="Søg">
+                    <button class="btn btn-outline-secondary rounded-1" type="submit" title="Søg">Søg</button>
+                </form>
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['loggedin']) === false) { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger rounded-1 me-2">Log ind</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=login" class="btn btn-danger rounded-1 me-2" title="Log ind">Log ind</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=register" class="btn btn-danger rounded-1">Opret konto</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=register" class="btn btn-danger rounded-1" title="Opret konto">Opret konto</a>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger rounded-1 me-2">Kundeside</a>
+                            <a href="<?=$URL_E;?>/clientarea/?page=dashboard" class="btn btn-danger rounded-1 me-2" title="Kundeside">Kundeside</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=$URL_E;?>/clientarea/?type=logout" class="btn btn-danger rounded-1">Log ud</a>
+                            <a href="<?=$URL_E;?>/clientarea/?type=logout" class="btn btn-danger rounded-1" title="Log ud">Log ud</a>
                         </li>
                     <?php } ?>
                 </ul>
