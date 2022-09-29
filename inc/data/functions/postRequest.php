@@ -83,15 +83,68 @@
         if (!empty($_POST['content'])) {
             $content = mysqli_real_escape_string($con, $_POST['content']);
         }
+        $img = $_FILES['img'];
+        if (!empty($img['name'])) {
+            if (filesize($img["tmp_name"]) <= 0) {
+                $status['error'] = "Denne fil har ingen content";
+            } else {
+                $image_type = exif_imagetype($img["tmp_name"]);
+                if (!$image_type) {
+                    $status['error'] = "Denne fil er ikke et billede";
+                } else {
+                    $image_extension = image_type_to_extension($image_type, true);
+                    $image_name = bin2hex(random_bytes(16)) . $image_extension;
+                    compress_image($img["tmp_name"], "../assets/files/img/abouts/" . $image_name, 25);
+                }
+            }
+        } else {
+            $image_name = mysqli_real_escape_string($con, $_POST['beforeimg']);
+        }
+        if (!$status) {
+            // $CheckIfAboutsExistResult = mysqli_query($con, "SELECT * FROM `fta_abouts` WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+            // if ($CheckIfAboutsExistResult) {
+            //     $UpdateThsiAboutResult = mysqli_query($con, "UPDATE `fta_abouts` SET `Abouts_Title` = '$title', `Abouts_Content` = '$content', `Abouts_IMG` = '$image_name' WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+            //     header('Location: ./?page=manage-abouts');
+            // } else {
+            //     $status['error'] = 'Der opstod en fejl under ændringen!';
+            // }
+        }
+    }
+
+    if (isset($_POST['create_abouts']) === true) {
+        if (!empty($_POST['title'])) {
+            $title = mysqli_real_escape_string($con, $_POST['title']);
+        }
+        if (!empty($_POST['content'])) {
+            $content = mysqli_real_escape_string($con, $_POST['content']);
+        }
         if (!empty($_POST['img'])) {
             $img = mysqli_real_escape_string($con, $_FILES['img']);
         }
-        $CheckIfAboutsExistResult = mysqli_query($con, "SELECT * FROM `fta_abouts` WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
-        if ($CheckIfAboutsExistResult) {
-            $UpdateThsiAboutResult = mysqli_query($con, "UPDATE `fta_abouts` SET `Abouts_Title` = '$title', `Abouts_Content` = '$content', `Abouts_IMG` = '$img' WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
-            header('Location: ./?page=manage-abouts');
+        if (!empty($img['name'])) {
+            if (filesize($img["tmp_name"]) <= 0) {
+                $status['error'] = "Denne fil har ingen content";
+            } else {
+                $image_type = exif_imagetype($img["tmp_name"]);
+                if (!$image_type) {
+                    $status['error'] = "Denne fil er ikke et billede";
+                } else {
+                    $image_extension = image_type_to_extension($image_type, true);
+                    $image_name = bin2hex(random_bytes(16)) . $image_extension;
+                    compress_image($img["tmp_name"], "../assets/files/img/abouts/" . $image_name, 25);
+                }
+            }
         } else {
-            $status['error'] = 'Der opstod en fejl under ændringen!';
+            $image_name = "nopicture.png";
+        }
+        if (!$status) {
+            $CheckIfAboutsExistResult = mysqli_query($con, "SELECT * FROM `fta_abouts` WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+            if ($CheckIfAboutsExistResult) {
+                $UpdateThsiAboutResult = mysqli_query($con, "UPDATE `fta_abouts` SET `Abouts_Title` = '$title', `Abouts_Content` = '$content', `Abouts_IMG` = '$image_name' WHERE `Abouts_ID` = '" . $_GET['id'] . "'");
+                header('Location: ./?page=manage-abouts');
+            } else {
+                $status['error'] = 'Der opstod en fejl under ændringen!';
+            }
         }
     }
 

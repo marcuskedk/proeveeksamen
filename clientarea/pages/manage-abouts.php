@@ -5,7 +5,7 @@
             <div class="card-header">
                 <h5 class="mb-0">Administrere <?=$AllAboutsFetch['Abouts_Title'];?> <a href="./?page=manage-abouts" class="float-end">Tilbage</a></h5>
             </div>
-            <form method="POST" class="card-body row g-3 needs-validation" novalidate>
+            <form method="POST" class="card-body row g-3 needs-validation" novalidate enctype="multipart/form-data">
                 <?php if ($status['error']) { ?>
                     <div class="col-12">
                         <?php foreach ($status as $error) { ?>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-12">
                     <input type="hidden" name="beforeimg" id="beforeimg-validate" value="<?=(isset($AllAboutsFetch['Abouts_IMG'])) ? $AllAboutsFetch['Abouts_IMG'] : $_POST['img'];?>">
-                    <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Billede" class="form-control rounded-1" required>
+                    <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Billede" class="form-control rounded-1">
                     <div class="valid-feedback">
                         Ser godt ud!
                     </div>
@@ -56,7 +56,7 @@
             <div class="card-header">
                 <h5 class="mb-0">Opret en ny om os <a href="./?page=manage-abouts" class="float-end">Tilbage</a></h5>
             </div>
-            <form method="POST" class="card-body row g-3 needs-validation" novalidate>
+            <form method="POST" class="card-body row g-3 needs-validation" novalidate enctype="multipart/form-data">
                 <?php if ($status['error']) { ?>
                     <div class="col-12">
                         <?php foreach ($status as $error) { ?>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Title" class="form-control rounded-1" required>
+                    <input type="file" name="img" id="img-validate" value="<?=(isset($_POST['img'])) ? $_POST['img'] : '';?>" placeholder="Title" class="form-control rounded-1">
                     <div class="valid-feedback">
                         Ser godt ud!
                     </div>
