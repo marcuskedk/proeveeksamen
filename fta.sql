@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Vært: 127.0.0.1
--- Genereringstid: 30. 09 2022 kl. 01:20:22
--- Serverversion: 10.4.20-MariaDB
--- PHP-version: 8.0.9
+-- Genereringstid: 30. 09 2022 kl. 13:52:54
+-- Serverversion: 10.4.21-MariaDB
+-- PHP-version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,7 @@ CREATE TABLE `fta_abouts` (
 --
 
 INSERT INTO `fta_abouts` (`Abouts_ID`, `Abouts_Title`, `Abouts_Content`, `Abouts_IMG`, `Abouts_Timestamp`) VALUES
-(1, 'Lorem ipsum dolor title', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem reprehenderit, recusandae similique odit animi id voluptates porro atque, officiis molestiae dignissimos nesciunt nam consequuntur inventore a cumque architecto labore sed!', 'about.jpg', '2022-09-27 11:51:47');
+(3, 'Lorem ipsum dolor title', 'Lorem ipsum dolor sit amet consectetur adipisicing...', 'nopicture.png', '2022-09-30 08:14:57');
 
 -- --------------------------------------------------------
 
@@ -67,6 +67,20 @@ INSERT INTO `fta_contacts` (`Contacts_ID`, `Contacts_Content`, `Contacts_Timesta
 (6, '(+45) 1234 5678', '2022-09-27 12:10:31'),
 (7, 'kontakt@ftatravels.dk', '2022-09-27 12:10:31'),
 (8, 'Alle hverdage kl. 10 til 17 eller efter aftale', '2022-09-27 12:10:31');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `fta_ratings`
+--
+
+CREATE TABLE `fta_ratings` (
+  `Ratings_ID` int(11) NOT NULL,
+  `Ratings_TravelsID` int(11) DEFAULT NULL,
+  `Ratings_UserID` int(11) DEFAULT NULL,
+  `Ratings_Number` int(11) DEFAULT NULL,
+  `Ratings_Timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -109,6 +123,7 @@ CREATE TABLE `fta_travels` (
   `Travels_Date` text DEFAULT NULL,
   `Travels_Duration` text DEFAULT NULL,
   `Travels_MinPrice` text DEFAULT NULL,
+  `Travels_MaxPrice` text DEFAULT NULL,
   `Travels_Ratings` int(11) DEFAULT 0,
   `Travels_IMG` text DEFAULT NULL,
   `Travels_Country` text DEFAULT NULL,
@@ -119,10 +134,10 @@ CREATE TABLE `fta_travels` (
 -- Data dump for tabellen `fta_travels`
 --
 
-INSERT INTO `fta_travels` (`Travels_ID`, `Travels_Title`, `Travels_Subtitle`, `Travels_Content`, `Travels_RoomType`, `Travels_Date`, `Travels_Duration`, `Travels_MinPrice`, `Travels_Ratings`, `Travels_IMG`, `Travels_Country`, `Travels_Timestamp`) VALUES
-(1, 'En tur til Japan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-09-26', NULL, NULL, 5, 'japan.jpg', 'Japan', '2022-09-26 09:39:11'),
-(2, 'En tur til Mexico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-09-01', NULL, NULL, 3, 'mexico.jpg', 'Mexico', '2022-09-26 09:39:11'),
-(3, 'En tur til Ungarn', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-10-07', NULL, NULL, 1, 'ungarn.jpg', 'Ungarn', '2022-09-26 09:39:11');
+INSERT INTO `fta_travels` (`Travels_ID`, `Travels_Title`, `Travels_Subtitle`, `Travels_Content`, `Travels_RoomType`, `Travels_Date`, `Travels_Duration`, `Travels_MinPrice`, `Travels_MaxPrice`, `Travels_Ratings`, `Travels_IMG`, `Travels_Country`, `Travels_Timestamp`) VALUES
+(1, 'En tur til Japan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-09-26', '14', '10000', '14000', 5, 'japan.jpg', 'Japan', '2022-09-26 09:39:11'),
+(2, 'En tur til Mexico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-09-01', '12', '16000', '25400', 3, 'mexico.jpg', 'Mexico', '2022-09-26 09:39:11'),
+(3, 'En tur til Ungarn', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis lectus quis sem lacinia nonummy.', '<p> Proin mollis lorem non dolor. In hac habitasse platea dictumst. <br> Nulla ultrices odio. Donec augue. Phasellus dui. <br> Maecenas facilisis nisl vitae nibh. </p> <ul> <li> Proin vel seo est vitae eros pretium dignissim. </li> <li> Aliquam aliquam sodales orci. Suspendisse potenti. </li> <li> Nunc adipiscing euismod arcu. </li> </ul> <p> Quisque facilisis mattis lacus. Fusce bibendum, velit in venenatis viverra, tellus ligula dignissim felis, quis euismod mauris tellus ut urna. Proin scelerisque. Nulla in mi. Integer ac leo. Nunc urna ligula, gravida a, pretium vitae, bibendum nec, ante. Aliquam ullamcorper iaculis lectus. Sed vel dui. Etiam lacinia risus vitae lacus. </p>', '<ul><li>Lorem</li><li>Ipsum</li><li>Aliquam ullamcorper</li></ul>', '2022-10-07', '17', '12000', '30000', 1, 'ungarn.jpg', 'Ungarn', '2022-09-26 09:39:11');
 
 -- --------------------------------------------------------
 
@@ -163,6 +178,12 @@ ALTER TABLE `fta_contacts`
   ADD PRIMARY KEY (`Contacts_ID`);
 
 --
+-- Indeks for tabel `fta_ratings`
+--
+ALTER TABLE `fta_ratings`
+  ADD PRIMARY KEY (`Ratings_ID`);
+
+--
 -- Indeks for tabel `fta_settings`
 --
 ALTER TABLE `fta_settings`
@@ -188,13 +209,19 @@ ALTER TABLE `fta_users`
 -- Tilføj AUTO_INCREMENT i tabel `fta_abouts`
 --
 ALTER TABLE `fta_abouts`
-  MODIFY `Abouts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Abouts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tilføj AUTO_INCREMENT i tabel `fta_contacts`
 --
 ALTER TABLE `fta_contacts`
   MODIFY `Contacts_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Tilføj AUTO_INCREMENT i tabel `fta_ratings`
+--
+ALTER TABLE `fta_ratings`
+  MODIFY `Ratings_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tilføj AUTO_INCREMENT i tabel `fta_settings`
