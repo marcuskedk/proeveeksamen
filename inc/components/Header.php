@@ -41,14 +41,14 @@
                         <a href="<?=$URL_E;?>/#about" class="nav-link" title="Om os">Om os</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$URL_E;?>/#products" class="nav-link" title="Produkter">Produkter</a>
+                        <a href="<?=$URL_E;?>/#travels" class="nav-link" title="Produkter">Rejsemål</a>
                     </li>
                     <li class="nav-item">
                         <a href="<?=$URL_E;?>/#contact" class="nav-link" title="Kontakt">Kontakt</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <form class="d-flex d-none d-lg-flex ms-auto" role="search" method="POST">
+                    <form class="d-flex d-none d-lg-flex ms-auto mb-0" role="search" method="POST">
                         <input class="form-control rounded-1 me-2" type="search" name="search" value="<?=(isset($_GET['search'])) ? $_GET['search'] : '';?>" placeholder="Søg..." aria-label="Søg" required>
                         <button class="btn btn-outline-secondary rounded-1 me-2" type="submit" name="searchnow" title="Søg">Søg</button>
                     </form>

@@ -10,7 +10,7 @@
 
 <main data-bs-target="#fta-navbar">
     <?php if (isset($_GET['search'])) { ?>
-        <section class="fta-section fta-travels" id="products">
+        <section class="fta-section fta-travels" id="travels">
             <div class="container">
                 <div class="row justify-content-center g-3 mt-3">
                     <div class="col-12">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </section>
-        <section class="fta-section fta-travels" id="products">
+        <section class="fta-section fta-travels" id="travels">
             <div class="container">
                 <div class="row justify-content-center g-3 mt-3">
                     <div class="col-12">

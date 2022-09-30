@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?=$URL_E;?>/assets/css/style.css">
 
     <script src="<?=$URL_E;?>/assets/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?=$URL_E;?>/assets/js/jquery-3.6.1.min.js" type="text/javascript"></script>
     <script src="<?=$URL_E;?>/assets/js/script.js" type="text/javascript"></script>
 
 </head>

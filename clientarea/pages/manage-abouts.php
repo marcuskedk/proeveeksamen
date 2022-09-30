@@ -115,7 +115,8 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th class="text-end">Dato</th>
+                        <th>Dato</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
