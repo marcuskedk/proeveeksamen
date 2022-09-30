@@ -170,7 +170,7 @@
                                                 </button>
                                                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
+                                                    <span class="visually-hidden">Næste</span>
                                                 </button>
                                             </div>
                                             <h2>' . $AllTravels_Value['Travels_Title'] . '</h2>
@@ -193,7 +193,7 @@
                                                 ';
                                             }
                                             if (isset($_SESSION['loggedin']) === false) {
-                                                $response = $response . '<a class="ms-2" data-bs-toggle="modal" href="#travels2' . $AllTravels_Key . '" role="button">Ville du gerne anmelde denne rejse?</a>';
+                                                $response = $response . '<a class="ms-2" data-bs-toggle="modal" href="#login' . $AllTravels_Key . '" role="button">Ville du gerne anmelde denne rejse?</a>';
                                             } else {
                                                 $response = $response . '<a class="ms-2" data-bs-toggle="modal" href="#rating' . $AllTravels_Key . '" role="button">Lav en anmeldelse</a>';
                                             }
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="travels2' . $AllTravels_Key . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="login' . $AllTravels_Key . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                     <form class="modal-content" method="POST">
                                         <div class="modal-header">
@@ -214,14 +214,16 @@
                                             if (isset($_SESSION['loggedin']) === false) {
                                                 $response = $response . '
                                                     <div class="col-12">
-                                                        <label for="email-validate" class="form-label">Email</label>
-                                                        <input type="email" name="email" id="email-validate" placeholder="Email" class="form-control rounded-1" value="' . ((isset($_POST['email'])) ? $_POST['email'] : '') . '" required>
+                                                        <label for="email-validate' . $AllTravels_Key . '" class="form-label">Email</label>
+                                                        <input type="email" name="email" id="email-validate' . $AllTravels_Key . '" placeholder="Email" class="form-control rounded-1" value="' . ((isset($_POST['email'])) ? $_POST['email'] : '') . '" required>
                                                     </div>
                                                     <div class="col-12">
-                                                        <label for="password-validate" class="form-label">Adgangskode</label>
-                                                        <input type="password" name="password" id="password-validate" placeholder="Adgangskode" class="form-control rounded-1" value="' . ((isset($_POST['password'])) ? $_POST['password'] : '') . '" required>
+                                                        <label for="password-validate' . $AllTravels_Key . '" class="form-label">Adgangskode</label>
+                                                        <input type="password" name="password" id="password-validate' . $AllTravels_Key . '" placeholder="Adgangskode" class="form-control rounded-1" value="' . ((isset($_POST['password'])) ? $_POST['password'] : '') . '" required>
                                                     </div>
                                                     <div class="col-12">
+                                                        <input type="hidden" name="type" value="rating">
+                                                        <input type="hidden" name="id" value="' . $AllTravels_Key . '">
                                                         <p class="mb-0">Har du ikke en konto? <a href="./clientarea/?type=register">Klik her</a></p>
                                                     </div>
                                                 ';
@@ -250,40 +252,40 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                     <form class="modal-content" method="POST">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Lav en anmeldelse</h5>
+                                            <h5 class="modal-title">Hvor mange stjerner?</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body row g-3">';
                                             if (isset($_SESSION['loggedin']) === true) {
                                                 $response = $response . '
-                                                    <div class="col-12">
+                                                    <div style="width: fit-content; margin: auto;">
                                                         <input class="star star-5" id="star-5" type="radio" name="star"/>
                                                         <label class="star star-5" for="star-5">
-                                                            <svg class="bi me-1" width="15" height="15" fill="">
+                                                            <svg class="bi me-1" width="35" height="35" fill="#000">
                                                                 <use xlink:href="./assets/files/icons/bootstrap-icons.svg#star-fill"/>
                                                             </svg>
                                                         </label>
                                                         <input class="star star-4" id="star-4" type="radio" name="star"/>
                                                         <label class="star star-4" for="star-4">
-                                                            <svg class="bi me-1" width="15" height="15" fill="#be1313">
+                                                            <svg class="bi me-1" width="35" height="35" fill="#000">
                                                                 <use xlink:href="./assets/files/icons/bootstrap-icons.svg#star-fill"/>
                                                             </svg>
                                                         </label>
                                                         <input class="star star-3" id="star-3" type="radio" name="star"/>
                                                         <label class="star star-3" for="star-3">
-                                                            <svg class="bi me-1" width="15" height="15" fill="#be1313">
+                                                            <svg class="bi me-1" width="35" height="35" fill="#000">
                                                                 <use xlink:href="./assets/files/icons/bootstrap-icons.svg#star-fill"/>
                                                             </svg>
                                                         </label>
                                                         <input class="star star-2" id="star-2" type="radio" name="star"/>
                                                         <label class="star star-2" for="star-2">
-                                                            <svg class="bi me-1" width="15" height="15" fill="#be1313">
+                                                            <svg class="bi me-1" width="35" height="35" fill="#000">
                                                                 <use xlink:href="./assets/files/icons/bootstrap-icons.svg#star-fill"/>
                                                             </svg>
                                                         </label>
-                                                        <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                                        <input class="star star-1" id="star-1" type="radio" name="star" checked/>
                                                         <label class="star star-1" for="star-1">
-                                                            <svg class="bi me-1" width="15" height="15" fill="#be1313">
+                                                            <svg class="bi me-1" width="35" height="35" fill="#000">
                                                                 <use xlink:href="./assets/files/icons/bootstrap-icons.svg#star-fill"/>
                                                             </svg>
                                                         </label>
@@ -296,7 +298,7 @@
                                                 <a class="btn btn-secondary me-2" data-bs-toggle="modal" href="#travels' . $AllTravels_Key . '" role="button">Tilbage</a>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
                                             </div>
-                                            <button type="submit" class="btn btn-danger" name="login">Log ind</button>
+                                            <button type="submit" class="btn btn-danger" name="rating">Send</button>
                                         </div>
                                     </form>
                                 </div>

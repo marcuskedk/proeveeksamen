@@ -31,7 +31,7 @@
                 if (password_verify($password, $UserDataFetch['Users_Password'])) {
                     $_SESSION['loggedin'] = 1;
                     $_SESSION['email'] = $email;
-                    if ($_POST['section'] === "rating") {
+                    if ($_POST['type'] === "rating") {
                         header('Location: ./?type=rating&id=' . $_POST['id']);
                     } else {
                         header('Location: ./?page=dashboard');
