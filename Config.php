@@ -11,11 +11,11 @@
     } else {
         $https = "https://";
     }
-    $URL = $https . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
-    if (strpos($https . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'], "inc/data/packs") !== false) {
+    $URL = $https . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    if (strpos($URL, "inc/data/packs") !== false) {
         $URL_E = '../../..';
         $URL_A = 'notactive';
-    } else if (strpos("https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'], "clientarea") !== false) {
+    } else if (strpos($URL, "clientarea") !== false) {
         $URL_E = '..';
         $URL_A = 'active';
     } else {

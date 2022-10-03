@@ -10,6 +10,6 @@
         <a href="./?page=manage-abouts" data-url="./?page=manage-abouts&id=<?=(isset($_GET['id'])) ? $_GET['id'] : '';?>" class="list-group-item list-group-item-action">Om os</a>
         <a href="./?page=manage-travels" data-url="./?page=manage-travels&id=<?=(isset($_GET['id'])) ? $_GET['id'] : '';?>" class="list-group-item list-group-item-action">Rejsemål</a>
         <a href="./?page=manage-contacts" data-url="./?page=manage-contacts&id=<?=(isset($_GET['id'])) ? $_GET['id'] : '';?>" class="list-group-item list-group-item-action">Kontakt oplysninger</a>
-        <a href="./?page=manage-accounts" data-url="./?page=manage-accounts&id=<?=(isset($_GET['id'])) ? $_GET['id'] : '';?>" class="list-group-item list-group-item-action">Kontoer</a>
+        <a href="./?page=manage-users" data-url="./?page=manage-users&id=<?=(isset($_GET['id'])) ? $_GET['id'] : '';?>" class="list-group-item list-group-item-action">Kontoer</a>
     </div>
 </aside>

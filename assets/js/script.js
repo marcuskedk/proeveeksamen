@@ -29,7 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
             menuItem4[i].classList.toggle("active");
         } else if (menuItem4[i].getAttribute("data-url") === currentLocation || menuItem4[i].getAttribute("data-url2") === currentLocation || menuItem4[i].getAttribute("data-url3") === currentLocation){
             menuItem4[i].classList.toggle("active");
-            console.log("first")
         }
+    }
+    if (document.getElementById('flexSwitchCheckDefault')) {
+        document.getElementById('flexSwitchCheckDefault').addEventListener("change", () => {
+            (document.getElementById('flexSwitchCheckDefault').checked == true) ? va = 1 : va = 0;
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "../inc/data/packs/newssubscription.pack.php?checked=" + va);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send();
+        });
     }
 });

@@ -151,6 +151,10 @@
             $status['error'] = 'Denne om os eksistere ikke!';
         }
     }
+
+    if (isset($_POST['delete_travels']) === true) {
+
+    }
     // TRAVELS END
 
     // ABOUTS START
@@ -221,14 +225,6 @@
             $status['error'] = 'Der opstod en fejl under ændringen!';
         }
     }
-
-    if (isset($_POST['delete_abouts']) === true) {
-        if (mysqli_query($con, "DELETE FROM `fta_abouts` WHERE `Abouts_ID` = '" . $_POST['delete_abouts'] . "'")) {
-            header('Location: ./?page=manage-abouts');
-        } else {
-            $status['error'] = "Der opstod en fejl under sletningen, prøv igen!";
-        }
-    }
     // ABOUTS END
 
     // SETTINGS START
@@ -272,5 +268,14 @@
         }
     }
     // SETTINGS END
+
+    if (isset($_POST['delete_this']) === true) {
+        $type = mysqli_real_escape_string($con, $_POST['type']);
+        if (mysqli_query($con, "DELETE FROM `fta_$type` WHERE `" . ucfirst($type) . "_ID` = '" . $_POST['delete_this'] . "'")) {
+            header('Location: ./?page=manage-' . $type);
+        } else {
+            $status['error'] = "Der opstod en fejl under sletningen, prøv igen!";
+        }
+    }
 
 ?>

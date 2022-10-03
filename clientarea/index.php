@@ -38,10 +38,10 @@
             require './pages/manage-contacts.php';
         } else if ($_GET['page'] === "create-contacts") {
             require './pages/manage-contacts.php';
-        } else if ($_GET['page'] === "manage-accounts") {
-            require './pages/manage-accounts.php';
-        } else if ($_GET['page'] === "manage-accounts") {
-            require './pages/manage-accounts.php';
+        } else if ($_GET['page'] === "manage-users") {
+            require './pages/manage-users.php';
+        } else if ($_GET['page'] === "create-users") {
+            require './pages/manage-users.php';
         } 
     }
 

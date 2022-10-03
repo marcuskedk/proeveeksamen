@@ -10,6 +10,43 @@
                         <p class="mb-0">' . $AllContacts_Value['Contacts_Content'] . '</p>
                     ';
                 }
+            } else if ($type === "manageTableContacts") {
+                foreach ($AllContactsResult as $AllContacts_Key => $AllContacts_Value) {
+                    $response = $response . '
+                        <tr>
+                            <td class="p-0"><a class="p-1 d-block text-dark" href="./?page=manage-contacts&id=' . $AllContacts_Value['Contacts_ID'] . '">' . $AllContacts_Key + 1 . '</a></td>
+                            <td class="p-0"><a class="p-1 d-block text-dark" href="./?page=manage-contacts&id=' . $AllContacts_Value['Contacts_ID'] . '">' . $AllContacts_Value['Contacts_Content'] . '</a></td>
+                            <td class="p-0"><a class="p-1 d-block text-dark" href="./?page=manage-contacts&id=' . $AllContacts_Value['Contacts_ID'] . '">' . Date('d-m-Y', strtotime($AllContacts_Value['Contacts_Timestamp'])) . '</a></td>
+                            <td class="p-1 text-end">
+                                <button type="button" class="btn btn-danger rounded-1 btn-sm py-0 px-2" data-bs-toggle="modal" data-bs-target="#contacts' . $AllContacts_Key . '">
+                                    Slet
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="contacts' . $AllContacts_Key . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Sletning - ' . $AllContacts_Value['Contacts_Content'] . '</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Er du sikker på at du ville slette: ' . $AllContacts_Value['Contacts_Content'] . '
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form method="POST">
+                                            <input type="hidden" name="type" value="contacts">
+                                            <button type="submit" class="btn btn-danger" name="delete_this" value="' . $AllContacts_Value['Contacts_ID'] . '">Ja</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nej</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ';
+                }
+            } else if ($type === "manageContactsByID") {
+                return $AllContactsFetch = mysqli_fetch_assoc($AllContactsResult);
             }
         }
         echo $response;
@@ -55,7 +92,10 @@
                                         Er du sikker på at du ville slette: ' . $AllAbouts_Value['Abouts_Title'] . '
                                     </div>
                                     <div class="modal-footer">
-                                        <form method="POST"><button type="submit" class="btn btn-danger" name="delete_abouts" value="' . $AllAbouts_Value['Abouts_ID'] . '">Ja</button></form>
+                                        <form method="POST">
+                                            <input type="hidden" name="type" value="abouts">
+                                            <button type="submit" class="btn btn-danger" name="delete_this" value="' . $AllAbouts_Value['Abouts_ID'] . '">Ja</button>
+                                        </form>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nej</button>
                                     </div>
                                 </div>
@@ -99,7 +139,7 @@
                                         Er du sikker på at du ville slette: ' . $AllTravels_Value['Travels_Title'] . '
                                     </div>
                                     <div class="modal-footer">
-                                        <form method="POST"><button type="submit" class="btn btn-danger" name="delete_abouts" value="' . $AllTravels_Value['Travels_ID'] . '">Ja</button></form>
+                                        <form method="POST"><input type="hidden" name="type" value="travels"><button type="submit" class="btn btn-danger" name="delete_this" value="' . $AllTravels_Value['Travels_ID'] . '">Ja</button></form>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nej</button>
                                     </div>
                                 </div>
